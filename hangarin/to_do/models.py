@@ -1,11 +1,12 @@
-from django.db import models
+from django.db import models 
 
 class BaseModel(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True) 
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True)
     updated_at = models.DateTimeField(auto_now=True)     
 
     class Meta:
         abstract = True
+
 
 class Category(BaseModel):
     name = models.CharField(max_length=100)
@@ -13,6 +14,7 @@ class Category(BaseModel):
     class Meta:
         verbose_name = "Category"
         verbose_name_plural = "Categories" 
+
     def __str__(self):
         return self.name
 
@@ -32,44 +34,42 @@ class Task(BaseModel):
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
     deadline = models.DateTimeField(null=True, blank=True)
-    priority = models.ForeignKey(Priority, on_delete=models.CASCADE, related_name='tasks')
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='tasks')
+    priority = models.ForeignKey(Priority, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     status = models.CharField(
-    max_length=50,
-    choices=[
-        ("Pending", "Pending"),
-        ("In Progress ", "In Progress"),
-        ("Completed", "Completed"),
-    ],
-    default="pending"
-)
-
+        max_length=50,
+        choices=[
+            ("Pending", "Pending"),
+            ("In Progress", "In Progress"),
+            ("Completed", "Completed"),
+        ],
+        default="Pending"
+    )
 
     def __str__(self):
         return self.title
 
 
 class SubTask(BaseModel):
-    task = models.ForeignKey(Task, on_delete=models.CASCADE, related_name='subtasks')
+    task = models.ForeignKey(Task, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     status = models.CharField(
-    max_length=50,
-    choices=[
-        ("Pending", "Pending"),
-        ("In Progress ", "In Progress"),
-        ("Completed", "Completed"),
-    ],
-    default="pending"
-)
-
+        max_length=50,
+        choices=[
+            ("Pending", "Pending"),
+            ("In Progress", "In Progress"),
+            ("Completed", "Completed"),
+        ],
+        default="Pending"
+    )
 
     def __str__(self):
         return self.title
 
 
 class Note(BaseModel):
-    task = models.ForeignKey(Task, on_delete=models.CASCADE, related_name='notes')
+    task = models.ForeignKey(Task, on_delete=models.CASCADE)
     content = models.TextField()
 
     def __str__(self):
-        return f"Note for {self.task.title} ({self.created_at:%Y-%m-%d})"
+        return f"Note for {self.task.title}"
