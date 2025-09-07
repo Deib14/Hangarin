@@ -7,22 +7,6 @@ class BaseModel(models.Model):
     class Meta:
         abstract = True
 
-"""status = models.CharField(
-    max_length=50,
-    choices=[
-        ("Pending", "Pending"),
-        ("In Progress ", "In Progress"),
-        ("Completed", "Completed"),
-    ],
-    default="pending"
-)"""
-STATUS_CHOICES = [
-    ("Pending", "Pending"),
-    ("In Progress", "In Progress"),
-    ("Completed", "Completed"),
-]
-
-
 class Category(BaseModel):
     name = models.CharField(max_length=100)
 
@@ -47,10 +31,19 @@ class Priority(BaseModel):
 class Task(BaseModel):
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
-    status = models.CharField(max_length=50, choices=STATUS_CHOICES, default="Pending")
     deadline = models.DateTimeField(null=True, blank=True)
     priority = models.ForeignKey(Priority, on_delete=models.CASCADE, related_name='tasks')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='tasks')
+    status = models.CharField(
+    max_length=50,
+    choices=[
+        ("Pending", "Pending"),
+        ("In Progress ", "In Progress"),
+        ("Completed", "Completed"),
+    ],
+    default="pending"
+)
+
 
     def __str__(self):
         return self.title
@@ -59,7 +52,16 @@ class Task(BaseModel):
 class SubTask(BaseModel):
     task = models.ForeignKey(Task, on_delete=models.CASCADE, related_name='subtasks')
     title = models.CharField(max_length=200)
-    status = models.CharField(max_length=50, choices=STATUS_CHOICES, default="Pending")
+    status = models.CharField(
+    max_length=50,
+    choices=[
+        ("Pending", "Pending"),
+        ("In Progress ", "In Progress"),
+        ("Completed", "Completed"),
+    ],
+    default="pending"
+)
+
 
     def __str__(self):
         return self.title
