@@ -52,7 +52,7 @@
                                             <td>{{ task.priority.name }}</td>  <!-- Assuming the priority has a 'name' attribute -->
                                             <td>{{ task.status }}</td>
                                             <td>{{ task.deadline|date:"Y-m-d H:i" }}</td> <!-- Formatting the deadline -->
-                                            <td><a href="task_list/{{ object.id }}">Edit</a></td>
+                                            <td><a href="task_list/{{ task.id }}">Edit</a></td>
                                         </tr>
                                     {% empty %}
                                         <tr>
