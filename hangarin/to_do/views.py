@@ -6,8 +6,9 @@ from to_do.forms import TaskForm, CategoryForm, SubTaskForm, PriorityForm, NoteF
 from django.urls import reverse_lazy
 from django.db.models import Q
 from django.utils import timezone
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class HomePageView(ListView):
+class HomePageView(LoginRequiredMixin,ListView):
     model = Task
     context_object_name = 'home'
     template_name = "home.html"
