@@ -4,14 +4,14 @@
 {% block content %}
     <div class="content">
         <div class="container-fluid">
-            <h4 class="page-title">Task List</h4>
+            <h4 class="page-title">Sub Task List</h4>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <br />
                                 <div class="col-md-12 row">
                                 <div class="col-md-6">
-                                    <form class="navbar-left navbar-form nav-search mr-md-3" action="{% url 'task-list' %}">
+                                    <form class="navbar-left navbar-form nav-search mr-md-3" action="{% url 'subtask-list' %}">
                                     <div class="input-group">
                                         <input type="text" placeholder="Search ..." class="form-control" name="q" />
                                         <div class="input-group-append">
@@ -24,7 +24,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="pull-right">
-                                    <a href="{% url 'task-add' %}" class="btn btn-success btn-rounded">Add Task</a>
+                                    <a href="{% url 'subtask-add' %}" class="btn btn-success btn-rounded">Add Sub Task</a>
                                     </div>
                                 </div>
                                 </div>
@@ -36,11 +36,8 @@
                                     <div class="col-auto">
                                     <select class="form-control form-control-sm" id="smallSelect" name="sort_by">
                                     <option value="title" {% if request.GET.sort_by == "title" %}selected{% endif %}>Title</option>
-                                    <option value="category__name" {% if request.GET.sort_by == "category__name" %}selected{% endif %}>Category</option>
-                                    <option value="priority__name" {% if request.GET.sort_by == "priority__name" %}selected{% endif %}>Priority</option>
                                     <option value="status" {% if request.GET.sort_by == "status" %}selected{% endif %}>Status</option>
-                                    <option value="deadline" {% if request.GET.sort_by == "deadline" %}selected{% endif %}>Deadline</option>
-                                    <option value="-deadline" {% if request.GET.sort_by == "-deadline" %}selected{% endif %}>Deadline (Descending)</option>
+                                    <option value="task__title" {% if request.GET.sort_by == "task__title" %}selected{% endif %}>Parent Task</option>n>
                                     </select>
                                     </div>
                                     <div class="col-auto">
@@ -53,25 +50,21 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">Title</th>
-                                        <th scope="col">Category</th>
-                                        <th scope="col">Priority</th>
                                         <th scope="col">Status</th>
-                                        <th scope="col">Deadline</th>
-                                        <th scope="col">Action</th>
+                                        <th scope="col">Parent Task Name</th>
+                                        <th scope="col">Action</th>                                        
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for task in object_list %}
+                                    {% for subtask in object_list %}
                                         <tr>
-                                            <td>{{ task.title }}</td>
-                                            <td>{{ task.category.name }}</td> <!-- Assuming the category has a 'name' attribute -->
-                                            <td>{{ task.priority.name }}</td>  <!-- Assuming the priority has a 'name' attribute -->
-                                            <td>{{ task.status }}</td>  <!-- what if i want to edit/update the content of this with a dropdown -->
-                                            <td>{{ task.deadline|date:"Y-m-d H:i" }}</td> <!-- Formatting the deadline -->
+                                            <td>{{ subtask.title }}</td>
+                                            <td>{{ subtask.status }}</td> <!-- Assuming the category has a 'name' attribute -->
+                                            <td>{{ subtask.task.title }}</td>  <!-- Assuming the priority has a 'name' attribute -->
                                             <!-- help me: Implement drag-and-drop functionality for tasks -->
                                             <td>
-                                                <a href="task_list/{{ task.id }}">Edit</a>
-                                                <a href="task_list/{{ task.id }}/delete" class="text-danger mx-2">Delete</a>
+                                                <a href="subtask_list/{{ subtask.id }}">Edit</a>
+                                                <a href="subtask_list/{{ subtask.id }}/delete" class="text-danger mx-2">Delete</a>
                                             </td>
                                             
                                         </tr>

@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Task
+from .models import Task, Category, Priority, Note, SubTask
 
 
 class TaskForm(ModelForm):
@@ -10,3 +10,23 @@ class TaskForm(ModelForm):
         widgets = {
             'deadline': forms.DateTimeInput(attrs={'class': 'form-control', 'type': 'datetime-local'})
         }
+
+class SubTaskForm(ModelForm):
+    class Meta:
+        model = SubTask
+        fields = "__all__"
+    
+class CategoryForm(ModelForm):
+    class Meta:
+        model = Category
+        fields = "__all__"
+        
+class PriorityForm(ModelForm):
+    class Meta:
+        model = Priority
+        fields = "__all__"
+        
+class NoteForm(ModelForm):
+    class Meta:
+        model = Note
+        fields = "__all__"

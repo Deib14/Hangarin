@@ -8,10 +8,11 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
+                        
                         <br />
                                 <div class="col-md-12 row">
                                 <div class="col-md-6">
-                                    <form class="navbar-left navbar-form nav-search mr-md-3" action="{% url 'task-list' %}">
+                                    <form class="navbar-left navbar-form nav-search mr-md-3" action="{% url 'priority-list' %}">
                                     <div class="input-group">
                                         <input type="text" placeholder="Search ..." class="form-control" name="q" />
                                         <div class="input-group-append">
@@ -24,7 +25,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="pull-right">
-                                    <a href="{% url 'task-add' %}" class="btn btn-success btn-rounded">Add Task</a>
+                                    <a href="{% url 'priority-add' %}" class="btn btn-success btn-rounded">Add Priority</a>
                                     </div>
                                 </div>
                                 </div>
@@ -35,12 +36,7 @@
                                     </div>
                                     <div class="col-auto">
                                     <select class="form-control form-control-sm" id="smallSelect" name="sort_by">
-                                    <option value="title" {% if request.GET.sort_by == "title" %}selected{% endif %}>Title</option>
-                                    <option value="category__name" {% if request.GET.sort_by == "category__name" %}selected{% endif %}>Category</option>
-                                    <option value="priority__name" {% if request.GET.sort_by == "priority__name" %}selected{% endif %}>Priority</option>
-                                    <option value="status" {% if request.GET.sort_by == "status" %}selected{% endif %}>Status</option>
-                                    <option value="deadline" {% if request.GET.sort_by == "deadline" %}selected{% endif %}>Deadline</option>
-                                    <option value="-deadline" {% if request.GET.sort_by == "-deadline" %}selected{% endif %}>Deadline (Descending)</option>
+                                    <option value="name" {% if request.GET.sort_by == "name" %}selected{% endif %}>Name</option>
                                     </select>
                                     </div>
                                     <div class="col-auto">
@@ -52,26 +48,17 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Title</th>
-                                        <th scope="col">Category</th>
-                                        <th scope="col">Priority</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Deadline</th>
+                                        <th scope="col">Name</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for task in object_list %}
+                                    {% for priority in object_list %}
                                         <tr>
-                                            <td>{{ task.title }}</td>
-                                            <td>{{ task.category.name }}</td> <!-- Assuming the category has a 'name' attribute -->
-                                            <td>{{ task.priority.name }}</td>  <!-- Assuming the priority has a 'name' attribute -->
-                                            <td>{{ task.status }}</td>  <!-- what if i want to edit/update the content of this with a dropdown -->
-                                            <td>{{ task.deadline|date:"Y-m-d H:i" }}</td> <!-- Formatting the deadline -->
-                                            <!-- help me: Implement drag-and-drop functionality for tasks -->
+                                            <td>{{ priority.name }}</td>
                                             <td>
-                                                <a href="task_list/{{ task.id }}">Edit</a>
-                                                <a href="task_list/{{ task.id }}/delete" class="text-danger mx-2">Delete</a>
+                                                <a href="priority_list/{{ priority.id }}">Edit</a>
+                                                <a href="priority_list/{{ priority.id }}/delete" class="text-danger mx-2">Delete</a>
                                             </td>
                                             
                                         </tr>

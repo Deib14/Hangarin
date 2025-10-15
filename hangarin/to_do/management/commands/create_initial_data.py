@@ -1,13 +1,14 @@
 from django.core.management.base import BaseCommand
 from faker import Faker
 from to_do.models import Task, SubTask, Note, Priority, Category
+from django.utils import timezone
 
 class Command(BaseCommand):
     help = 'Create initial data for the application'
 
     def handle(self, *args, **kwargs):
-        self.create_tasks(10)
-        self.create_subtasks(20)
+        self.create_tasks(15)
+        self.create_subtasks(15)
         self.create_notes(15)
 
     def create_tasks(self, count):
@@ -18,7 +19,8 @@ class Command(BaseCommand):
                 description=fake.paragraph(nb_sentences=3),
                 status=fake.random_element(elements=["Pending", "In Progress", "Completed"]),
                 priority=Priority.objects.order_by('?').first(),
-                category=Category.objects.order_by('?').first()
+                category=Category.objects.order_by('?').first(),
+                deadline=timezone.make_aware(fake.date_time_this_month())
             )
         self.stdout.write(self.style.SUCCESS('Initial data for task created successfully.'))
 

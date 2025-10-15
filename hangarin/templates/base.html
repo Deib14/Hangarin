@@ -14,6 +14,7 @@
     <!-- CSS Libraries -->
     <link href="{% static 'assets/libs/chartist/dist/chartist.min.css' %}" rel="stylesheet">
     <link href="{% static 'dist/css/style.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets\css\demo\custom.css' %}" rel="stylesheet">
 
     {% block extra_css %}{% endblock %}
 </head>
@@ -50,9 +51,9 @@
                         <li class="nav-item search-box">
                             <a class="nav-link waves-effect waves-dark" href="javascript:void(0)">
                                 <div class="d-flex align-items-center">
-                                    <i class="mdi mdi-magnify font-20 mr-1"></i>
+                                    
                                     <div class="ml-1 d-none d-sm-block">
-                                        <span>Search</span>
+                                        
                                     </div>
                                 </div>
                             </a>
@@ -99,22 +100,27 @@
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'task-list' %}" aria-expanded="false">
-                                <i class="mdi mdi-account-network"></i> <span class="hide-menu">Profile</span>
+                                <i class="mdi mdi-account-network"></i> <span class="hide-menu">Task</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{}" aria-expanded="false">
-                                <i class="mdi mdi-checkbox-multiple-marked-outline"></i> <span class="hide-menu">Tasks</span>
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'subtask-list' %}" aria-expanded="false">
+                                <i class="mdi mdi-checkbox-multiple-marked-outline"></i> <span class="hide-menu">Sub Task</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{}" aria-expanded="false">
-                                <i class="mdi mdi-file-document-box"></i> <span class="hide-menu">Reports</span>
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'category-list' %}" aria-expanded="false">
+                                <i class="mdi mdi-file-document-box"></i> <span class="hide-menu">Category</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{}" aria-expanded="false">
-                                <i class="mdi mdi-settings"></i> <span class="hide-menu">Settings</span>
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'priority-list' %}" aria-expanded="false">
+                                <i class="mdi mdi-settings"></i> <span class="hide-menu">Priority</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{% url 'note-list' %}" aria-expanded="false">
+                                <i class="mdi mdi-settings"></i> <span class="hide-menu">Note</span>
                             </a>
                         </li>
                     </ul>

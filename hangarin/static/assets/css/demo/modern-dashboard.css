@@ -1,0 +1,168 @@
+/* Modern Dashboard Styles */
+.content {
+    padding: 2rem;
+    background: #f8f9fa;
+}
+
+/* Stats Cards */
+.card-stats {
+    border: none !important;
+    border-radius: 15px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+    transition: transform 0.2s !important;
+}
+
+.card-stats:hover {
+    transform: translateY(-5px);
+}
+
+.card-stats .card-body {
+    padding: 1.5rem !important;
+}
+
+.card-stats .icon-big {
+    font-size: 3rem !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.card-stats .numbers {
+    padding-left: 0.7rem !important;
+}
+
+.card-stats .card-category {
+    font-size: 0.9rem !important;
+    margin-bottom: 0.25rem !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.card-stats .card-title {
+    font-size: 1.8rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 0 !important;
+    color: white !important;
+}
+
+/* Recent Activity Cards */
+.card {
+    border: none !important;
+    border-radius: 15px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.card .card-header {
+    background: transparent !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+    padding: 1.5rem !important;
+}
+
+.card .card-title {
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+    color: #32325d !important;
+    margin: 0 !important;
+}
+
+.card .card-category {
+    font-size: 0.875rem !important;
+    color: #525f7f !important;
+    margin-top: 0.25rem !important;
+}
+
+.card .card-body {
+    padding: 1.5rem !important;
+}
+
+/* Card Colors */
+.card-warning {
+    background: linear-gradient(45deg, #ffbe0b, #fb5607) !important;
+}
+
+.card-success {
+    background: linear-gradient(45deg, #02c39a, #00a896) !important;
+}
+
+.card-danger {
+    background: linear-gradient(45deg, #ff006e, #fb5607) !important;
+}
+
+.card-primary {
+    background: linear-gradient(45deg, #7a00ff, #b266ff) !important;
+}
+
+/* Activity Lists */
+ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+ul li {
+    padding: 1rem !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+ul li:last-child {
+    border-bottom: none !important;
+}
+
+.activity-icon {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-right: 1rem !important;
+    background: rgba(122, 0, 255, 0.1) !important;
+}
+
+.activity-content {
+    flex: 1 !important;
+}
+
+.activity-title {
+    font-weight: 600 !important;
+    color: #32325d !important;
+    margin-bottom: 0.25rem !important;
+}
+
+.activity-description {
+    color: #525f7f !important;
+    margin-bottom: 0.25rem !important;
+}
+
+.activity-time {
+    font-size: 0.875rem !important;
+    color: #8898aa !important;
+}
+
+/* Page title */
+.page-title {
+    color: #32325d !important;
+    font-weight: 600 !important;
+    margin-bottom: 1.5rem !important;
+    font-size: 1.5rem !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .content {
+        padding: 1rem !important;
+    }
+    
+    .card-stats .numbers {
+        padding-left: 0 !important;
+        text-align: right !important;
+    }
+    
+    .card-stats .icon-big {
+        font-size: 2.5rem !important;
+    }
+    
+    .card-stats .card-title {
+        font-size: 1.5rem !important;
+    }
+}

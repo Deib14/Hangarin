@@ -1,0 +1,62 @@
+/* Table and Content Auto-fit Styles */
+.table td, .table th {
+    white-space: normal !important;
+    word-wrap: break-word;
+    max-width: 200px;
+    vertical-align: middle !important;
+    padding: 12px 15px !important;
+}
+
+/* Make table responsive */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Content container responsiveness */
+.content {
+    padding: 1.5rem;
+    min-height: calc(100vh - 140px);
+}
+
+.container-fluid {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Card body padding and spacing */
+.card-body {
+    padding: 1.25rem;
+}
+
+/* Prevent text overflow in table cells */
+.table td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 100px;
+}
+
+/* Make sure form elements don't overflow */
+.form-control {
+    max-width: 100%;
+}
+
+/* Responsive text sizing */
+@media (max-width: 768px) {
+    .table {
+        font-size: 0.875rem;
+    }
+    .card-title {
+        font-size: 1.25rem;
+    }
+    .page-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Improve button wrapping */
+.btn {
+    white-space: normal;
+    word-wrap: break-word;
+    margin: 2px;
+}
