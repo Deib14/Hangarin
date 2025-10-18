@@ -3,8 +3,8 @@ self.addEventListener('install', function (e) {
         caches.open('projectsite-cache-v1').then(function (cache) {
             return cache.addAll([
                 '/',
-                '/static/css/bootstrap.min.css',
-                '/static/js/main.js',
+                '/static/assets/libs/bootstrap/dist/css/bootstrap.min.css',
+                '/static/assets/libs/bootstrap/dist/js/bootstrap.min.js',
             ]);
         })
     );
